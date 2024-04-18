@@ -22,4 +22,8 @@ func main() {
 
     var intSlice3 []int32 = make([]int32, 3, 8)
     fmt.Printf("The length is %v with capacity of %v\n", len(intSlice3), cap(intSlice3))
+
+    for index, value := range intArr {
+        fmt.Println("Index:", index, "Value:", value)
+    }
 }
