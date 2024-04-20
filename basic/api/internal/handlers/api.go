@@ -10,7 +10,7 @@ func Handlers(r *chi.Mux) {
     // global middleware
     r.Use(chimiddle.StripSlashes)
 
-    r.Router("/account", func (router chi.Router) {
+    r.Route("/account", func (router chi.Router) {
         // middleware for /account
         router.Use(middleware.Authorization)
 

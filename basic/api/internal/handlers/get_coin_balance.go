@@ -22,7 +22,7 @@ func GetCoinBalance(w http.ResponseWriter, r *http.Request) {
         api.InternalErrorHandler(w)
         return
     }
-    var database = *tools.DatabaseInterface
+    var database *tools.DatabaseInterface
     database, err = tools.NewDatabase()
 
     if err != nil {
@@ -31,7 +31,7 @@ func GetCoinBalance(w http.ResponseWriter, r *http.Request) {
     }
 
     var tokenDetails *tools.CoinDetails
-    tokenDetails = (*database).GetCoinBalance(params.Username)
+    tokenDetails = (*database).GetUserCoins(params.Username)
 
     if tokenDetails == nil {
         log.Error(err)
