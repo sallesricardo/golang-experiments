@@ -21,7 +21,8 @@ type DatabaseInterface interface {
 }
 
 func NewDatabase() (*DatabaseInterface, error) {
-    var database DatabaseInterface = &mockDB(){}
+    var database DatabaseInterface = &mockDB{}
+
 
     var err error = database.SetupDatabase()
     if err != nil {

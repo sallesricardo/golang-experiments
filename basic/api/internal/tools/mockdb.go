@@ -4,6 +4,8 @@ import (
     "time"
 )
 
+type mockDB struct {}
+
 var mockLoginDetails = map[string]LoginDetails {
     "alex": {
         AuthToken: "123ABC",
@@ -16,7 +18,7 @@ var mockLoginDetails = map[string]LoginDetails {
     "marie": {
         AuthToken: "789GHI",
         Username: "marie",
-    }
+    },
 }
 
 var mockCoinDetails = map[string]CoinDetails {
@@ -31,14 +33,14 @@ var mockCoinDetails = map[string]CoinDetails {
     "marie": {
         Coins: 300,
         Username: "marie",
-    }
+    },
 }
 
 func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
     time.Sleep(time.Second * 1)
 
     var clientData = LoginDetails{}
-    clientData, ok = mockLoginDetails[username]
+    clientData, ok := mockLoginDetails[username]
     if !ok {
         return nil
     }
@@ -46,7 +48,7 @@ func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 
 }
 
-func (d *mockDB) GetUserCoins(username) *CoinDetails {
+func (d *mockDB) GetUserCoins(username string) *CoinDetails {
     time.Sleep(time.Second * 1)
 
     var clientData = CoinDetails{}
